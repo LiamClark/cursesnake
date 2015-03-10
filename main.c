@@ -1,7 +1,7 @@
 #include <curses.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "readboard.h"
+#include "board.h"
 
 const size_t rows=10;
 const size_t collums=20;
@@ -20,9 +20,7 @@ int main(int argc, char** argv){
       a[i][j]='a';
     }
   }
-
-  int liamenjacinthahouden = INTEGER_MAX_VALUE; //2^32 = 4,4........ biljoen en 42 beetjes boel
-  readboard("board.txt");
+  board_t board = readboard("./board.txt");
 
   int ch;
 
@@ -36,15 +34,7 @@ int main(int argc, char** argv){
       break;
     }
 
-
-    for(size_t i=0;  i<rows; i++){
-      for(size_t j=0; j<collums; j++){
-        addch(a[i][j]);
-      }
-      int y,x;
-      getyx(stdscr,y,x);
-      move(y+1,0);
-    }
+    printboard(board);
 
     move(0,0);
   	refresh();			/* Print it on to the real screen */
