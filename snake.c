@@ -1,22 +1,6 @@
 #include "snake.h"
-
-
-typedef struct snake_part_queue{
-  snake_part* parts
-  int head=0;
-  int tail=0;
-  int cap;
-}snake_part_queue;
-
-
-void add_part(snake_part_queue* q, snake_part p){
-    int head= q->head;
-    q->parts[head] = p;
-    head++;
-
-}
-
-
+#include "stdlib.h"
+#include "arraydeque.h"
 
 
 
@@ -30,4 +14,8 @@ snake_t make_snake(int cap){
   s->body.parts = malloc(sizeof(snake_part)*cap);
   s->body.cap = cap;
   return s;
+}
+
+void(*draw)(board b,snake_part* p){
+  b->matrix[p->x][p->y] = 'X';
 }

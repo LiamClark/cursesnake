@@ -1,5 +1,6 @@
-CC = clang
-CFLAGS = -std=c99 -lncurses -Wall -g
+CC = gcc
+CFLAGS = -std=c99 -Wall -g
+LDFLAGS = -lncurses -L/usr/lib/ -lcunit
 SOURCES = $(wildcard *.c)
 all:
-	$(CC) $(CFLAGS) $(SOURCES) -o snake.out
+	$(CC) $(CFLAGS) $(SOURCES) -o snake.out $(LDFLAGS)
