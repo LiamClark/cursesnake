@@ -37,6 +37,10 @@ board_t readboard(char* filename){
   return board;
 }
 
+void setchar(board_t b,int x, int y, char c){
+  b->matrix[x][y] =c;
+}
+
 void printboard(board_t board){
   int height = board->height;
   int width = board->width;

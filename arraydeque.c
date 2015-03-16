@@ -20,7 +20,7 @@ snake_part tail(snake_part_queue* q){
 }
 
 int part_count(snake_part_queue* q){
-  return (cap-head+tail) % cap;
+  return (q->cap-q->head+q->tail) % q->cap;
 }
 
 //asume that the queue wil never actually become full because then you win the game this case will never happen
@@ -34,15 +34,15 @@ void add_part(snake_part_queue* q, snake_part p){
 snake_part take_part(snake_part_queue* q){
     int oldtail=q->tail;
     q->tail = (oldtail+1) % q->cap;
-    return parts[oldtail];
+    return q->parts[oldtail];
 }
 
-void iterate(snake_part_queue* q ,void(*draw)(board b,snake_part* p),board b){
+void iterate(snake_part_queue* q ,void(*draw)(board_t b,snake_part* p),board_t b){
   int start = q->tail;
   int end =q->head;
   int cap =q->cap;
 
-  for(int i =start; i!=end; (i+1)%cap){
+  for(int i =start; i!=end; i=(i+1)%cap){
     draw(b,&q->parts[i]);
   }
 }
