@@ -29,7 +29,7 @@ void draw_snake(snake_t s,board_t b){
 
 //didn't care about the x,y stuff
 void draw_buffer(board_t b,snake_part* p){
-  setchar(b,p->y,p->x,'X');
+  set_tile(b,p->y,p->x,'X');
 }
 
 void move_snake(snake_t s,int c){

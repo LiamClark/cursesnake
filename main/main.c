@@ -10,7 +10,7 @@ const size_t collums=20;
 
 
 int main(int argc, char** argv){
-  board_t board = readboard("main/res/board.txt");
+  board_t board = read_board("main/res/board.txt");
   snake_t snake = make_snake(rows*collums);
   snake_part new_part={1,1};
   snake_add_part(snake,new_part);

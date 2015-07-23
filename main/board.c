@@ -10,7 +10,7 @@ typedef struct board{
 }board;
 
 
-board_t readboard(char* filename){
+board_t read_board(const char* filename){
   board_t board = malloc(sizeof(board));
   FILE* board_file = fopen(filename,"r");
   //get  the board sizes
@@ -25,8 +25,8 @@ board_t readboard(char* filename){
     matrix[i] = &contigousarray[i*width];
   }
   //fill the array from
-  for(int i=0; i<height; ++i){
-    for(int j=0; j<width; ++j){
+  for(int i = 0; i < height; ++i) {
+    for(int j = 0; j < width; ++j) {
       matrix[i][j] = fgetc(board_file);
     }
     // skip the new line
@@ -37,9 +37,32 @@ board_t readboard(char* filename){
   return board;
 }
 
-void setchar(board_t b,int x, int y, char c){
+board_t make_board(const char** board_format, const int width, const int height){
+  board_t board = malloc(sizeof(board));
+
+  char** matrix = malloc(height * sizeof(char*));
+  char*  contigousarray = malloc(height * width * sizeof(char));
+
+  for(size_t i = 0; i < height; i++){
+    matrix[i] = &contigousarray[i * width];
+  }
+  for(int i = 0; i<height; i++){
+    for(int j = 0; j < width; j++) {
+      matrix[i][j] = board_format[i][j];
+    }
+  }
+  board->matrix = matrix;
+  return board;
+}
+
+void set_tile(board_t b,int x, int y, char c){
   b->matrix[x][y] = c;
 }
+
+char get_tile(board_t b,int x, int y){
+  return b->matrix[x][y];
+}
+
 
 void printboard(board_t board){
   int height = board->height;
