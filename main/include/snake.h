@@ -18,4 +18,6 @@ void draw_buffer(board_t b,snake_part* p);
 
 void draw_snake(snake_t s,board_t b);
 
+void move_snake(snake_t s,int c);
+
 #endif
