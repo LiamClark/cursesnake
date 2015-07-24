@@ -7,13 +7,17 @@ const char* test_board[] =
 {
   "###",
   "# #",
+  "# #",
   "###"
 };
 
 const int width = 3;
-const int height = 3;
+const int height = 4;
+
+board_t board;
 
 int setup(void){
+  board = make_board(test_board,width,height);
   return 0;
 }
 
@@ -22,7 +26,6 @@ int after(void){
 }
 
 void make_board_test(void){
-  board_t board = make_board(test_board,width,height);
   for (int i = 0; i < width; i++) {
     for(int j = 0; j < height; j++ ) {
         CU_ASSERT_EQUAL(test_board[i][j], get_tile(board,i,j));
