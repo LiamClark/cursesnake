@@ -9,43 +9,48 @@ typedef struct board{
   int height;
 }board;
 
-
-board_t read_board(const char* filename){
-  board_t board = malloc(sizeof(board));
-  FILE* board_file = fopen(filename,"r");
-  //get  the board sizes
-  fscanf(board_file,"%d\n%d\n",&board->width,&board->height);
-  int height = board->height;
-  int width = board->width;
-
-  char** matrix = malloc(height*sizeof(char*));
-  char*  contigousarray = malloc(height*width*sizeof(char));
-  //set up our matrix as a 1d array but with subscript operators
-  for(size_t i=0; i < height;i++){
-    matrix[i] = &contigousarray[i*width];
-  }
-  //fill the array from
-  for(int i = 0; i < height; ++i) {
-    for(int j = 0; j < width; ++j) {
-      matrix[i][j] = fgetc(board_file);
-    }
-    // skip the new line
-    fgetc(board_file);
-  }
-  //copy in the pointer to the matrix
-  board->matrix = matrix;
-  return board;
-}
-
-board_t make_board(const char** board_format, const int width, const int height){
-  board_t board = malloc(sizeof(board));
-
+char** make_contiguous_array(const int width, const int height){
   char** matrix = malloc(height * sizeof(char*));
   char*  contigousarray = malloc(height * width * sizeof(char));
   // first index is the y coordinate
   for(size_t i = 0; i < height; i++){
     matrix[i] = &contigousarray[i * width];
   }
+
+  return matrix;
+}
+
+void delete_contigous_array(char** ca){
+  free(ca[0]);
+  free(ca);
+}
+
+board_t read_board(const char* filename){
+  int height,width;
+  FILE* board_file = fopen(filename,"r");
+  //get  the board sizes
+  fscanf(board_file,"%d\n%d\n",&width,&height);
+
+  char** board_format = make_contiguous_array(width,height);
+  //fill the array from
+  for(int i = 0; i < height; ++i) {
+    for(int j = 0; j < width; ++j) {
+      board_format[i][j] = fgetc(board_file);
+    }
+    // skip the new line
+    fgetc(board_file);
+  }
+  board_t board = make_board(board_format,width,height);
+
+  delete_contigous_array(board_format);
+
+  return board;
+}
+
+board_t make_board(char* const* board_format, const int width, const int height){
+  board_t board = malloc(sizeof(board));
+
+  char** matrix = make_contiguous_array(width,height);
 
   for(int i = 0; i < height; i++){
     for(int j = 0; j < width; j++) {
@@ -58,8 +63,7 @@ board_t make_board(const char** board_format, const int width, const int height)
 }
 
 void delete_board(board_t board){
-  free(board->matrix[0]);
-  free(board->matrix);
+  delete_contigous_array(board->matrix);
   free(board);
 }
 

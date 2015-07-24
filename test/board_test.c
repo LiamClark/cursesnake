@@ -3,7 +3,7 @@
 #include "board.h"
 
 
-const char* test_board[] =
+char* const test_board[] =
 {
   "123",
   "456"
@@ -36,6 +36,20 @@ void make_board_test(void) {
   }
 }
 
+void read_board_test(void) {
+  int res = 0;
+  const char expected[] = "#### #";
+  board_t fboard = read_board("test/res/board.txt");
+
+  for(int y = 0; y < height; y++) {
+    for (int x = 0; x < width; x++) {
+        CU_ASSERT_EQUAL( expected[res] , get_tile(fboard,y,x));
+        res++;
+    }
+  }
+  delete_board(fboard);
+}
+
 void set_tile_test(void) {
   const int y = 1, x = 2;
   const char expected = 's';
@@ -49,6 +63,7 @@ CU_pSuite getBoardSuite(void){
 
   CU_add_test(suite,"make_board_test",make_board_test);
   CU_add_test(suite,"set_tile_test",set_tile_test);
+  CU_add_test(suite,"read_board_test",read_board_test);
 
   return suite;
 }
