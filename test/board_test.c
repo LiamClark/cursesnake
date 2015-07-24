@@ -5,34 +5,34 @@
 
 const char* test_board[] =
 {
-  "###",
-  "# #",
-  "# #",
-  "###"
+  "123",
+  "456"
 };
 
 const int width = 3;
-const int height = 4;
+const int height = 2;
+
+const char expected[] = "123456";
 
 board_t board;
 
-int setup(void){
+int setup(void) {
   board = make_board(test_board,width,height);
   return 0;
 }
 
-int after(void){
+int after(void) {
   return 0;
 }
 
-void make_board_test(void){
-  for (int i = 0; i < width; i++) {
-    for(int j = 0; j < height; j++ ) {
-        CU_ASSERT_EQUAL(test_board[i][j], get_tile(board,i,j));
+void make_board_test(void) {
+  for(int y = 0, res = 0; y < height; y++) {
+    for (int x = 0; x < width; x++) {
+        CU_ASSERT_EQUAL( expected[res] , get_tile(board,y,x));
+        res++;
     }
   }
 }
-
 
 CU_pSuite getBoardSuite(void){
   CU_pSuite suite = CU_add_suite("board-suite",setup,after);
