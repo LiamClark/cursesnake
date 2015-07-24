@@ -10,5 +10,9 @@ int main(int argc, char** argv){
   }
   CU_pSuite board = getBoardSuite();
   CU_basic_set_mode(CU_BRM_NORMAL);
-  return CU_basic_run_tests();
+  int err = CU_basic_run_tests();
+
+  CU_cleanup_registry();
+
+  return err;
 }

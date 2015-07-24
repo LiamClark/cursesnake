@@ -57,6 +57,12 @@ board_t make_board(const char** board_format, const int width, const int height)
   return board;
 }
 
+void delete_board(board_t board){
+  free(board->matrix[0]);
+  free(board->matrix);
+  free(board);
+}
+
 void set_tile(board_t b,int y, int x, char c){
   b->matrix[y][x] = c;
 }
