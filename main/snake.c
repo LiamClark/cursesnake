@@ -9,13 +9,9 @@ typedef struct snake{
 }snake;
 
 
-snake_t make_snake(int cap){
+snake_t make_snake(const int cap){
   snake_t s= malloc(sizeof(snake));
-  s->body.parts = malloc(sizeof(snake_part)*cap);
-  snake_part_queue* q = &(s->body);
-  q->cap = cap;
-  q->head=0;
-  q->tail=0;
+  s.body = make_queue(cap);
   return s;
 }
 
@@ -50,4 +46,8 @@ void move_snake(snake_t s,int c){
         break;
   }
   add_part(q,head);
+}
+
+snake_part_queue* get_body(const snake_t s){
+  return &body;
 }

@@ -1,15 +1,16 @@
 #include "arraydeque.h"
 #include "snake.h"
+#include <stdlib.h>
 
 
-
-// typedef struct snake_part_queue{
-//   snake_part* parts
-//   int head=0;
-//   int tail=0;
-//   int cap;
-// }snake_part_queue;
-
+snake_part_queue make_queue(const int cap){
+  snake_part_queue q;
+  q.parts = malloc(sizeof(snake_part)*cap);
+  q.cap = cap;
+  q.head=0;
+  q.tail=0;
+  return q;
+}
 
 snake_part front(snake_part_queue* q){
   return q->parts[q->head];

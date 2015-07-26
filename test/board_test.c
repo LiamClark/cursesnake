@@ -64,6 +64,6 @@ CU_pSuite getBoardSuite(void){
   CU_add_test(suite,"make_board_test",make_board_test);
   CU_add_test(suite,"set_tile_test",set_tile_test);
   CU_add_test(suite,"read_board_test",read_board_test);
-
+  
   return suite;
 }

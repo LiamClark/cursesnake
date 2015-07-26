@@ -10,6 +10,8 @@ typedef struct snake_part_queue{
   int cap;
 }snake_part_queue;
 
+snake_part_queue make_queue(const int capacity);
+
 void add_part(snake_part_queue* q, snake_part p);
 
 void iterate(snake_part_queue* q ,void(*draw)(board_t b,snake_part* p),board_t b);
