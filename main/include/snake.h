@@ -1,13 +1,8 @@
 #ifndef SNAKE
 #define SNAKE
 
-#include "board.h"
 #include "arraydeque.h"
-
-typedef struct snake_part{
-  int x;
-  int y;
-}snake_part;
+#include "board.h"
 
 typedef struct snake* snake_t;
 
@@ -21,6 +16,7 @@ void draw_snake(snake_t s,board_t b);
 
 void move_snake(snake_t s,int c);
 
-snake_part_queue* get_body(const snake_t s);
+snake_part_queue * get_body(const snake_t s);
+
 
 #endif

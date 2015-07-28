@@ -1,7 +1,12 @@
 #ifndef ARRAYDEQUE
 #define ARRAYDEQUE
 
-#include "snake.h"
+#include "board.h"
+
+typedef struct snake_part{
+  int x;
+  int y;
+}snake_part;
 
 typedef struct snake_part_queue{
   snake_part* parts;
