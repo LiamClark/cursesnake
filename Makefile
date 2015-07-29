@@ -1,4 +1,4 @@
-CC = gcc
+CC = clang
 CFLAGS = -std=c11 -Wall -g -I main/include -I test/include
 LDFLAGS = -lncurses
 
@@ -16,10 +16,10 @@ MAINOBJS =	$(patsubst %,$(ODIR)/%,$(_MOBJS))
 TESTOBJS =  $(patsubst %,$(ODIR)/%,$(_TOBJS))
 
 $(ODIR)/%.o: $(TDIR)/%.c
-	$(CC) $(CFLAGS) -c $(INC)	-o $@ $<
+	$(CC) $(CFLAGS) -c $(INC) $< -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.c
-	$(CC) $(CFLAGS) -c $(INC)	-o $@ $<
+	$(CC) $(CFLAGS) -c $(INC) $< -o $@
 
 tests: $(MAINOBJS) $(TESTOBJS)
 	$(CC) $(TESTOBJS) $(MAINOBJS) $(LDFLAGS) -lcunit -o $(TOUT)
