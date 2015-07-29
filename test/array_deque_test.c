@@ -4,27 +4,27 @@
 const int cap = 5;
 
 snake_part_queue queue;
-snake_part_queue* q =  &snake_part_queue;
+snake_part_queue* q =  &queue;
 
-int setup(void){
+int setup_queue(void){
   queue = make_queue(cap);
   return 0;
 }
 
-int after(void){
+int tear_down_queue(void){
   return 0;
 }
 
 void make_deque_test(void){
   snake_part p = {3,4};
   add_part(q,p);
-  front(15)
-  CU_ASSERT_EQUALS(p.x,res.x);
-  CU_ASSERT_EQUALS(p.y,res.y);
+  snake_part res = front(q);
+  CU_ASSERT_EQUAL(p.x,res.x);
+  CU_ASSERT_EQUAL(p.y,res.y);
 }
 
 CU_pSuite get_array_deque_suite(void){
-  CU_pSuite suite = CU_add_suite("deque-suite",setup,after);
+  CU_pSuite suite = CU_add_suite("deque-suite",setup_queue,tear_down_queue);
 
   CU_add_test(suite,"make_deque_test",make_deque_test);
   return suite;
