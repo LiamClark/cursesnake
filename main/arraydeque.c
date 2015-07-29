@@ -5,10 +5,10 @@
 
 snake_part_queue make_queue(const int cap){
   snake_part_queue q;
-  q.parts = malloc(sizeof(snake_part)*cap);
+  q.parts = malloc( sizeof(snake_part) *cap);
   q.cap = cap;
-  q.head=0;
-  q.tail=0;
+  q.head = 0;
+  q.tail = 0;
   return q;
 }
 
@@ -38,12 +38,12 @@ snake_part take_part(snake_part_queue* q){
     return q->parts[oldtail];
 }
 
-void iterate(snake_part_queue* q ,void(*draw)(board_t b,snake_part* p),board_t b){
+void iterate(snake_part_queue* q ,draw_func draw,board_t b){
   int start = q->tail;
-  int end =q->head;
-  int cap =q->cap;
+  int end = q->head;
+  int cap = q->cap;
 
-  for(int i =start; i!=end; i=(i+1)%cap){
+  for(int i = start; i != end; i = (i+1) % cap){
     draw(b,&q->parts[i]);
   }
 }
