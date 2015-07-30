@@ -30,4 +30,6 @@ snake_part tail(snake_part_queue* q);
 
 snake_part take_part(snake_part_queue* q);
 
+void delete_queue(snake_part_queue* q);
+
 #endif
