@@ -22,6 +22,8 @@ snake_part_queue make_queue(const int capacity);
 
 void add_part(snake_part_queue* q, snake_part p);
 
+int part_count(snake_part_queue* q);
+
 void iterate(snake_part_queue* q ,draw_func func ,board_t b);
 
 snake_part front(snake_part_queue* q);
