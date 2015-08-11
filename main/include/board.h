@@ -12,5 +12,6 @@ void set_tile(board_t b, int y, int x, char c);
 char get_tile(board_t b,int y, int x);
 
 void printboard(board_t board);
+void printfboard(board_t board);
 
 #endif

@@ -9,7 +9,7 @@ typedef struct board{
   int height;
 }board;
 
-char** make_contiguous_array(const int width, const int height){
+char** make_contiguous_array(const int width, const int height) {
   char** matrix = malloc(height * sizeof(char*));
   char*  contigousarray = malloc(height * width * sizeof(char));
   // first index is the y coordinate
@@ -20,12 +20,12 @@ char** make_contiguous_array(const int width, const int height){
   return matrix;
 }
 
-void delete_contigous_array(char** ca){
+void delete_contigous_array(char** ca) {
   free(ca[0]);
   free(ca);
 }
 
-board_t read_board(const char* filename){
+board_t read_board(const char* filename) {
   int height,width;
   FILE* board_file = fopen(filename,"r");
   //get  the board sizes
@@ -47,7 +47,7 @@ board_t read_board(const char* filename){
   return board;
 }
 
-board_t make_board(char* const* board_format, const int width, const int height){
+board_t make_board(char* const* board_format, const int width, const int height) {
   board_t board = malloc(sizeof(board));
 
   char** matrix = make_contiguous_array(width,height);
@@ -59,6 +59,8 @@ board_t make_board(char* const* board_format, const int width, const int height)
   }
 
   board->matrix = matrix;
+  board->width = width;
+  board->height = height;
   return board;
 }
 
@@ -76,7 +78,7 @@ char get_tile(board_t b,int y, int x){
 }
 
 
-void printboard(board_t board){
+void printboard(board_t board) {
   int height = board->height;
   int width = board->width;
   char** matrix = board->matrix;
@@ -88,5 +90,18 @@ void printboard(board_t board){
     int y,x;
     getyx(stdscr,y,x);
     move(y+1,0);
+  }
+}
+
+void printfboard(board_t board){
+  int height = board->height;
+  int width = board->width;
+  char** matrix = board->matrix;
+
+  for(size_t i=0; i < height; i++) {
+    for(size_t j = 0; j < width; j++) {
+      printf("%c",(matrix[i][j]));
+    }
+    printf("\n");
   }
 }
