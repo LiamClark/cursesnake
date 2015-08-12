@@ -12,9 +12,10 @@ void draw_buffer(board_t b,snake_part* p);
 
 void draw_snake(snake_t s,board_t b);
 
-void move_snake(snake_t s,int c);
+snake_part snake_get_next_move(snake_t s,int c);
+
+void apply_move(snake_t s , snake_part part);
 
 snake_part_queue * get_body(const snake_t s);
-
 
 #endif
