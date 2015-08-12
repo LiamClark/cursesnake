@@ -79,7 +79,7 @@ char get_tile(board_t b,int y, int x) {
 
 
 bool int_in_range(int point, int max) {
-  return 0 < point && point < max;
+  return 0 <= point && point < max;
 }
 
 bool is_in_range(board_t board, snake_part part) {
