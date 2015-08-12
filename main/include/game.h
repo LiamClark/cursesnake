@@ -13,8 +13,8 @@ typedef struct game{
 
 game_t make_game(board_t board, snake_t snake, snake_part start);
 
-game_error game_move(game_t game, char keypress);
+game_error game_move(game_t game, int keypress);
 
-game_error game_loop(game_t game, char keypress);
+game_error game_loop(game_t game, int keypress);
 
 #endif

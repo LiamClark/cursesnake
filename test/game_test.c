@@ -1,5 +1,6 @@
 #include "tests.h"
 #include "game.h"
+#include <ncurses.h>
 
 static char* const test_board[] =
 {
@@ -21,7 +22,7 @@ int setup_game(void) {
   board = make_board(test_board, width, height);
   snake = make_snake(width * height);
   snake_part start = {1,1};
-  make_game(board, snake, start);
+  game = make_game(board, snake, start);
   return 0;
 }
 
@@ -32,7 +33,7 @@ int teardown_game(void) {
 }
 
 void game_loop_test(void) {
-  printfboard(board);
+  game_loop(game,KEY_DOWN);
 }
 
 

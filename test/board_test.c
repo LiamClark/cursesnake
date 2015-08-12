@@ -58,6 +58,13 @@ void set_tile_test(void) {
   CU_ASSERT_EQUAL(expected,result);
 }
 
+void is_in_range_test(void) {
+  snake_part in_range = {1,1};
+  snake_part out_of_range = {3,3};
+  CU_ASSERT_TRUE(is_in_range(board,in_range));
+  CU_ASSERT_FALSE(is_in_range(board,out_of_range));
+}
+
 
 CU_pSuite get_board_suite(void){
   CU_pSuite suite = CU_add_suite("board-suite",setup,after);
@@ -65,6 +72,7 @@ CU_pSuite get_board_suite(void){
   CU_add_test(suite,"make_board_test",make_board_test);
   CU_add_test(suite,"set_tile_test",set_tile_test);
   CU_add_test(suite,"read_board_test",read_board_test);
+  CU_add_test(suite,"is_in_range_test",is_in_range_test);
 
   return suite;
 }
