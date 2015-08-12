@@ -25,7 +25,7 @@ void draw_buffer(board_t b,snake_part* p){
 
 void move_snake(snake_t s,int c){
   snake_part_queue* q = &(s->body);
-  snake_part head = front(q);
+  snake_part head = tail(q);
   switch (c){
       case KEY_UP:
         head.y = head.y-1;
