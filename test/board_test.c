@@ -1,5 +1,5 @@
 #include <CUnit/CUnit.h>
-#include "board_test.h"
+#include "tests.h"
 #include "board.h"
 
 
@@ -59,7 +59,7 @@ void set_tile_test(void) {
 }
 
 
-CU_pSuite getBoardSuite(void){
+CU_pSuite get_board_suite(void){
   CU_pSuite suite = CU_add_suite("board-suite",setup,after);
 
   CU_add_test(suite,"make_board_test",make_board_test);

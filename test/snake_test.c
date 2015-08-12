@@ -1,5 +1,5 @@
 #include <CUnit/CUnit.h>
-#include "snake_test.h"
+#include "tests.h"
 #include "snake.h"
 
 static const int capacity = 3;

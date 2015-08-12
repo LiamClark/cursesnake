@@ -1,4 +1,4 @@
-#include "array_deque_test.h"
+#include "tests.h"
 #include <stdbool.h>
 #include "snake.h"
 
