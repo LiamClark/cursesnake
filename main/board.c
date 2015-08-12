@@ -43,7 +43,7 @@ board_t read_board(const char* filename) {
   board_t board = make_board(board_format,width,height);
 
   delete_contigous_array(board_format);
-
+  fclose(board_file); 
   return board;
 }
 

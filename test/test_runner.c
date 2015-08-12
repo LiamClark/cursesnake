@@ -13,6 +13,7 @@ int main(int argc, char** argv){
   CU_pSuite deque = get_array_deque_suite();
   CU_pSuite game = get_game_suite();
   CU_basic_set_mode(CU_BRM_NORMAL);
+
   int err = CU_basic_run_tests();
 
   CU_cleanup_registry();

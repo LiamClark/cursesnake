@@ -10,7 +10,7 @@ typedef struct snake{
 
 
 snake_t make_snake(const int cap) {
-  snake_t s = malloc( sizeof(snake));
+  snake_t s = malloc( sizeof(struct snake));
   s->body = make_queue(cap);
   return s;
 }
@@ -53,4 +53,5 @@ snake_part_queue* get_body(const snake_t s) {
 
 void delete_snake(snake_t s) {
   delete_queue(&s->body);
+  free(s);
 }

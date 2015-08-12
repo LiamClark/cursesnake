@@ -6,11 +6,12 @@ static char* const test_board[] =
   "#####",
   "#   #",
   "#   #",
+  "#   #",
   "#####"
 };
 
 static const int width = 5;
-static const int height = 4;
+static const int height = 5;
 
 board_t board;
 snake_t snake;
@@ -31,7 +32,7 @@ int teardown_game(void) {
 }
 
 void game_loop_test(void) {
-
+  printfboard(board);
 }
 
 
