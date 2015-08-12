@@ -48,7 +48,7 @@ board_t read_board(const char* filename) {
 }
 
 board_t make_board(char* const* board_format, const int width, const int height) {
-  board_t board = malloc(sizeof(board));
+  board_t board = malloc(sizeof(struct board));
 
   char** matrix = make_contiguous_array(width,height);
 
