@@ -43,12 +43,12 @@ board_t read_board(const char* filename) {
   board_t board = make_board(board_format,width,height);
 
   delete_contigous_array(board_format);
-
+  fclose(board_file);
   return board;
 }
 
 board_t make_board(char* const* board_format, const int width, const int height) {
-  board_t board = malloc(sizeof(board));
+  board_t board = malloc(sizeof(struct board));
 
   char** matrix = make_contiguous_array(width,height);
 
@@ -64,19 +64,28 @@ board_t make_board(char* const* board_format, const int width, const int height)
   return board;
 }
 
-void delete_board(board_t board){
+void delete_board(board_t board) {
   delete_contigous_array(board->matrix);
   free(board);
 }
 
-void set_tile(board_t b,int y, int x, char c){
+void set_tile(board_t b,int y, int x, char c) {
   b->matrix[y][x] = c;
 }
 
-char get_tile(board_t b,int y, int x){
+char get_tile(board_t b,int y, int x) {
   return b->matrix[y][x];
 }
 
+
+bool int_in_range(int point, int max) {
+  return 0 < point && point < max;
+}
+
+bool is_in_range(board_t board, snake_part part) {
+  return int_in_range(part.x, board->width) &&
+            int_in_range(part.y, board->height);
+}
 
 void printboard(board_t board) {
   int height = board->height;

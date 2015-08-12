@@ -2,12 +2,7 @@
 #define ARRAYDEQUE
 
 #include "board.h"
-
-
-typedef struct snake_part{
-  int x;
-  int y;
-}snake_part;
+#include "snakepart.h"
 
 typedef struct snake_part_queue{
   snake_part* parts;
