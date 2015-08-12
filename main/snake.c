@@ -43,10 +43,14 @@ snake_part  snake_get_next_move(snake_t s, int c) {
   return head;
 }
 
-void apply_move(snake_t s , snake_part part){
+void apply_move(snake_t s , snake_part part) {
   add_part(&s->body,part);
 }
 
 snake_part_queue* get_body(const snake_t s) {
   return &s->body;
+}
+
+void delete_snake(snake_t s) {
+  delete_queue(&s->body);
 }

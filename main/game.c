@@ -1,8 +1,7 @@
 #include "game.h"
 
-game_t make_game(board_t board, snake_t snake) {
+game_t make_game(board_t board, snake_t snake, snake_part start) {
   game_t ga = {board,snake};
-  snake_part start = {3,4};
   add_part(get_body(snake),start);
   return ga;
 }
@@ -12,14 +11,14 @@ game_error game_move(game_t game, char keypress) {
   snake_part next_pos = snake_get_next_move(game.snake, keypress);
   if ( is_in_range(game.board, next_pos) ) {
       apply_move(game.snake, next_pos);
-      return OK;
+      return GAME_OK;
   }
   return INVALID_MOVE;
 }
 
 game_error game_loop(game_t game, char keypress) {
   int err = game_move(game, keypress);
-  if (err != 0 ) {
+  if (err == GAME_OK ) {
     draw_snake(game.snake,game.board);
   }
   return 0;

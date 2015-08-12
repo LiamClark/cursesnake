@@ -18,4 +18,6 @@ void apply_move(snake_t s , snake_part part);
 
 snake_part_queue * get_body(const snake_t s);
 
+void delete_snake(snake_t s);
+
 #endif

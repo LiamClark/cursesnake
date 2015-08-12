@@ -3,21 +3,21 @@
 #include "board.h"
 
 
-char* const test_board[] =
+static char* const test_board[] =
 {
   "123",
   "456"
 };
 
-const int width = 3;
-const int height = 2;
+static const int width = 3;
+static const int height = 2;
 
 const char expected[] = "123456";
 
 board_t board;
 
 int setup(void) {
-  board = make_board(test_board,width,height);
+  board = make_board(test_board, width, height);
   return 0;
 }
 
