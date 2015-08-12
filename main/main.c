@@ -10,7 +10,12 @@ const size_t collums = 20;
 
 int main(int argc, char** argv){
   board_t board = read_board("main/res/board.txt");
-  snake_t snake = make_snake(rows*collums);
+  snake_t snake = make_snake(rows * collums);
+
+  snake_part start = {3,4};
+
+  add_part(get_body(snake),start);
+
   int ch;
 
 	initscr();			// Start curses mode
