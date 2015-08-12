@@ -25,7 +25,11 @@ int main(int argc, char** argv){
       break;
     }
 
-    game_loop(game, ch);
+    game_error error = game_loop(&game, ch);
+    
+    if (error != GAME_OK){
+      break;
+    }
 
     printboard(board);
 
