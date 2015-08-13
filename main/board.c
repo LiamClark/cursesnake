@@ -1,7 +1,7 @@
 #include "board.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <curses.h>
+#include <ncurses.h>
 
 typedef struct board{
   char** matrix;
