@@ -24,7 +24,7 @@ void* driver_func(void* config) {
 
 input_error is_valid_key(int key) {
   input_error error = INPUT_INVALID_KEY;
-  if ( (KEY_DOWN <= key && key >= KEY_RIGHT) || key == 'q' ) {
+  if ( (KEY_DOWN <= key && key <= KEY_RIGHT) || key == 'q' ) {
     error = INPUT_OK;
   }
   return error;

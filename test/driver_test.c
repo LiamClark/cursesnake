@@ -12,16 +12,19 @@ int driver_after(void) {
   return 0;
 }
 
+const int key_down = KEY_DOWN;
+const int key_right = KEY_RIGHT;
+
 void range_test(void) {
-  CU_ASSERT_TRUE( KEY_DOWN < KEY_RIGHT );
-  CU_ASSERT_TRUE( KEY_LEFT < KEY_RIGHT );
-  CU_ASSERT_TRUE( KEY_DOWN < KEY_LEFT );
+  CU_ASSERT_TRUE( key_down < key_right );
+  CU_ASSERT_TRUE( KEY_LEFT < key_right );
+  CU_ASSERT_TRUE( key_down < KEY_LEFT );
 }
 
 void is_valid_key_test(void) {
-  CU_ASSERT_TRUE  ( is_valid_key('q') );
-  CU_ASSERT_TRUE  ( is_valid_key(KEY_DOWN) );
-  CU_ASSERT_FALSE ( is_valid_key( 'X') );
+  CU_ASSERT_TRUE  ( is_valid_key('q') == INPUT_OK );
+  CU_ASSERT_TRUE  ( is_valid_key(key_down) == INPUT_OK );
+  CU_ASSERT_TRUE ( is_valid_key('X') == INPUT_INVALID_KEY);
 }
 
 
