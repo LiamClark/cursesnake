@@ -6,7 +6,7 @@
 
 typedef struct snake* snake_t;
 
-typedef enum direction {UP,DOWN,LEFT,RIGHT} direction;
+typedef enum direction {DOWN,UP,LEFT,RIGHT} direction;
 
 snake_t make_snake(const int cap);
 

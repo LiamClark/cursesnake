@@ -67,3 +67,7 @@ input_error is_valid_key(int key) {
   }
   return error;
 }
+
+direction find_direction(int key) {
+  return key - KEY_DOWN;
+}

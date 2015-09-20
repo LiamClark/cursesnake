@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include "pthread.h"
 #include "game.h"
+#include "driver.h"
 
 const size_t rows = 10;
 const size_t collums = 20;
@@ -27,8 +28,8 @@ int main(int argc, char** argv) {
     if (ch == 'q'){
       break;
     }
-
-    game_error error = game_loop(&game, ch);
+    direction dir = find_direction(ch);
+    game_error error = game_loop(&game, dir);
 
     if (error != GAME_OK){
       break;

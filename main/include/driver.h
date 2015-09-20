@@ -4,7 +4,6 @@
 #include <pthread.h>
 #include "snake.h"
 
-
 typedef enum input_error {INPUT_OK, INPUT_INVALID_KEY} input_error;
 
 typedef struct driver_config {
@@ -22,8 +21,10 @@ direction get_direction(driver_config* config);
 pthread_t* start_driver(driver_config* config);
 
 //function to drive the pthread expects a pointer to a driver_config
-void* driver_func(void*);
+void* driver_func(void* driver_config);
 
 input_error is_valid_key(int key);
+
+direction find_direction(int key);
 
 #endif

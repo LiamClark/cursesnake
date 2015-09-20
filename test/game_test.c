@@ -40,21 +40,21 @@ void redo(void){
 }
 
 void game_loop_test(void) {
-  game_error err = game_loop(game,KEY_DOWN);
+  game_error err = game_loop(game,DOWN);
   CU_ASSERT_EQUAL(err,GAME_OK);
 }
 
 void game_wall_collision_test(void) {
   redo();
-  game_error err = game_loop(game,KEY_UP);
+  game_error err = game_loop(game,UP);
   CU_ASSERT_EQUAL(err,GAME_COLLISION);
 }
 
 void game_snake_collision_test(void) {
   redo();
-  game_error error = game_loop(game,KEY_DOWN);
+  game_error error = game_loop(game,DOWN);
   CU_ASSERT_EQUAL(error, GAME_OK);
-  error = game_loop(game, KEY_UP);
+  error = game_loop(game, UP);
   CU_ASSERT_EQUAL(error, GAME_COLLISION);
 }
 
@@ -64,6 +64,6 @@ CU_pSuite get_game_suite(void) {
   CU_add_test(suite,"game_loop_test",game_loop_test);
   CU_add_test(suite,"game_wall_test",game_wall_collision_test);
   CU_add_test(suite,"game_snake_test",game_snake_collision_test);
-  
+
   return suite;
 }

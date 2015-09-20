@@ -26,35 +26,22 @@ void draw_buffer(board_t b,snake_part* p) {
 snake_part  snake_get_next_move(snake_t s, int c) {
   snake_part_queue* q = &(s->body);
   snake_part head = tail(q);
+
   switch (c) {
-      case KEY_UP:
+      case UP:
         head.y = head.y - 1;
         break;
-      case KEY_DOWN:
+      case DOWN:
         head.y = head.y + 1;
         break;
-      case  KEY_LEFT:
+      case LEFT:
         head.x = head.x - 1;
         break;
-      case KEY_RIGHT:
+      case RIGHT:
         head.x = head.x + 1;
         break;
   }
   return head;
-}
-
-direction find_direction(int character) {
-  switch (character) {
-      case KEY_UP:
-        return UP;
-      case KEY_DOWN:
-        return DOWN;
-      case  KEY_LEFT:
-        return LEFT;
-      case KEY_RIGHT:
-        return RIGHT;
-  }
-  return UP;
 }
 
 void apply_move(snake_t s, snake_part part) {
