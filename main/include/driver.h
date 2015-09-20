@@ -2,8 +2,8 @@
 #define DRIVER_H
 
 #include <pthread.h>
+#include "snake.h"
 
-typedef enum direction {UP,DOWN,LEFT,RIGHT} direction;
 
 typedef enum input_error {INPUT_OK, INPUT_INVALID_KEY} input_error;
 
@@ -11,6 +11,13 @@ typedef struct driver_config {
   direction direction;
   pthread_mutex_t mutex;
 }driver_config;
+
+driver_config* create_config(direction dir);
+
+void destroy_config(driver_config* config);
+
+void set_direction(driver_config* config, direction dir);
+direction get_direction(driver_config* config);
 
 pthread_t* start_driver(driver_config* config);
 

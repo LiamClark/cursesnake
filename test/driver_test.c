@@ -27,6 +27,21 @@ void is_valid_key_test(void) {
   CU_ASSERT_TRUE ( is_valid_key('X') == INPUT_INVALID_KEY);
 }
 
+void create_cf_test(void) {
+  driver_config* cf = create_config(UP);
+  CU_ASSERT_TRUE(cf->direction == UP );
+  destroy_config(cf);
+}
+
+void get_and_set_test(void) {
+  driver_config* cf = create_config(UP);
+
+  set_direction(cf, DOWN);
+  direction dir = get_direction(cf);
+
+  CU_ASSERT_TRUE(dir == DOWN);
+}
+
 
 CU_pSuite get_driver_suite(void) {
 
@@ -34,6 +49,8 @@ CU_pSuite get_driver_suite(void) {
 
   CU_add_test(suite,"char_literal_test",range_test);
   CU_add_test(suite,"is_valid_key_test",is_valid_key_test);
+  CU_add_test(suite,"create_config_test",create_cf_test);
+  CU_add_test(suite,"get_and_set_test",get_and_set_test);
 
   return suite;
 }

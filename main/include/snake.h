@@ -6,11 +6,15 @@
 
 typedef struct snake* snake_t;
 
+typedef enum direction {UP,DOWN,LEFT,RIGHT} direction;
+
 snake_t make_snake(const int cap);
 
 void draw_buffer(board_t b,snake_part* p);
 
 void draw_snake(snake_t s,board_t b);
+
+direction find_direction(int character);
 
 snake_part snake_get_next_move(snake_t s,int c);
 

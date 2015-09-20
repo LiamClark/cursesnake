@@ -43,6 +43,20 @@ snake_part  snake_get_next_move(snake_t s, int c) {
   return head;
 }
 
+direction find_direction(int character) {
+  switch (character) {
+      case KEY_UP:
+        return UP;
+      case KEY_DOWN:
+        return DOWN;
+      case  KEY_LEFT:
+        return LEFT;
+      case KEY_RIGHT:
+        return RIGHT;
+  }
+  return UP;
+}
+
 void apply_move(snake_t s, snake_part part) {
   add_part(&s->body,part);
 }
