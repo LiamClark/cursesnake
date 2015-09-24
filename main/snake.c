@@ -23,6 +23,18 @@ void draw_buffer(board_t b,snake_part* p) {
   set_tile(b,p->y,p->x,'X');
 }
 
+input_error is_valid_key(int key) {
+  input_error error = INPUT_INVALID_KEY;
+  if ( (KEY_DOWN <= key && key <= KEY_RIGHT) || key == 'q' ) {
+    error = INPUT_OK;
+  }
+  return error;
+}
+
+direction find_direction(int key) {
+  return key - KEY_DOWN;
+}
+
 snake_part  snake_get_next_move(snake_t s, int c) {
   snake_part_queue* q = &(s->body);
   snake_part head = tail(q);

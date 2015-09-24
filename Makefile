@@ -9,8 +9,8 @@ ODIR = obj
 SDIR = main
 TDIR = test
 
-_MOBJS = arraydeque.o board.o snake.o game.o driver.o
-_TOBJS = test_runner.o board_test.o snake_test.o array_deque_test.o game_test.o driver_test.o
+_MOBJS = arraydeque.o board.o snake.o game.o
+_TOBJS = test_runner.o board_test.o snake_test.o array_deque_test.o game_test.o
 
 EXEC = $(ODIR)/main.o
 MAINOBJS =	$(patsubst %,$(ODIR)/%,$(_MOBJS))

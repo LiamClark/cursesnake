@@ -10,7 +10,6 @@ int main(int argc, char** argv){
     return CU_get_error();
   }
   CU_pSuite deque = get_array_deque_suite();
-  CU_pSuite driver = get_driver_suite();
   CU_pSuite board = get_board_suite();
   CU_pSuite game = get_game_suite();
 

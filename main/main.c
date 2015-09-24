@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include "pthread.h"
 #include "game.h"
-#include "driver.h"
 
 const size_t rows = 10;
 const size_t collums = 20;
