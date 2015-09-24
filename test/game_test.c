@@ -40,21 +40,25 @@ void redo(void){
 }
 
 void game_loop_test(void) {
-  game_error err = game_loop(game,DOWN);
+  game_error err = game_drive_snake(game,DOWN);
   CU_ASSERT_EQUAL(err,GAME_OK);
+}
+
+void game_loop_test_bad(void) {
+
 }
 
 void game_wall_collision_test(void) {
   redo();
-  game_error err = game_loop(game,UP);
+  game_error err = game_drive_snake(game,UP);
   CU_ASSERT_EQUAL(err,GAME_COLLISION);
 }
 
 void game_snake_collision_test(void) {
   redo();
-  game_error error = game_loop(game,DOWN);
+  game_error error = game_drive_snake(game,DOWN);
   CU_ASSERT_EQUAL(error, GAME_OK);
-  error = game_loop(game, UP);
+  error = game_drive_snake(game, UP);
   CU_ASSERT_EQUAL(error, GAME_COLLISION);
 }
 

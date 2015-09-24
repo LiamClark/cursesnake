@@ -15,20 +15,14 @@ int main(int argc, char** argv) {
   snake_part start = {3,4};
   game_t game = make_game(board, snake, start);
 
-  int ch;
-
 	initscr();			// Start curses mode
 	raw();				// Line buffering disabled
 	keypad(stdscr, TRUE);		// We get F1, F2 etc..
 	noecho();			// Don't echo() while we do getch
+  nodelay(stdscr,TRUE); //non blocking input mode.
 
   for(;;) {
-  	ch = getch();
-    if (ch == 'q'){
-      break;
-    }
-    direction dir = find_direction(ch);
-    game_error error = game_loop(&game, dir);
+    game_error error = game_loop(&game);
 
     if (error != GAME_OK){
       break;

@@ -32,10 +32,27 @@ game_error check_move(game_t* game, snake_part next_pos){
   return OUT_OF_BOUNDS;
 }
 
-game_error game_loop(game_t* game, int keypress) {
-  game_error err = game_move(game, keypress);
+game_error game_drive_snake(game_t* game, direction dir) {
+  game_error err = game_move(game,dir);
+
   if (err == GAME_OK ) {
     draw_snake(game->snake, game->board);
   }
   return err;
+}
+
+game_error game_loop(game_t* game) {
+  int ch = getch();
+  direction dir;
+  game_error error = GAME_OK;
+  if (ch != ERR) {
+    if( ch == 'q') {
+      error = GAME_OVER;
+    } else {
+      direction dir = find_direction(ch);
+      error = game_drive_snake(game,dir);
+    }
+  }
+
+  return error;
 }
