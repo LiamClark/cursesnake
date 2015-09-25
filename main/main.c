@@ -47,6 +47,11 @@ int main(int argc, char** argv) {
     request.tv_nsec = elapsed;
     nanosleep(&request,NULL);
   }
+
+  delete_board(board);
+  delete_snake(snake);
+  
+
   endwin();			// End curses mode
   return 0;
 }
