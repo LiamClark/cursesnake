@@ -44,10 +44,6 @@ void game_loop_test(void) {
   CU_ASSERT_EQUAL(err,GAME_OK);
 }
 
-void game_loop_test_bad(void) {
-
-}
-
 void game_wall_collision_test(void) {
   redo();
   game_error err = game_drive_snake(game,UP);

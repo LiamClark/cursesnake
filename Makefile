@@ -1,5 +1,5 @@
 CC = clang
-CFLAGS = -std=c11 -Wall -g -I main/include -I test/include
+CFLAGS = -std=gnu11 -Wall -g -I main/include -I test/include
 LDFLAGS = -lncurses -lpthread
 
 OUT = snake
