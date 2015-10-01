@@ -11,6 +11,7 @@ typedef enum game_error {GAME_OK, GAME_OVER,OUT_OF_BOUNDS,
 typedef struct game{
   board_t board;
   snake_t snake;
+  direction dir;
 }game_t;
 
 game_t make_game(board_t board, snake_t snake, snake_part start);

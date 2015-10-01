@@ -1,7 +1,7 @@
 #include "game.h"
 
 game_t make_game(board_t board, snake_t snake, snake_part start) {
-  game_t ga = {board,snake};
+  game_t ga = {board,snake,RIGHT};
   add_part(get_body(snake),start);
   return ga;
 }
