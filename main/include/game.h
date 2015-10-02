@@ -20,7 +20,7 @@ game_error game_drive_snake(game_t* game, direction dir);
 
 game_error game_move(game_t* game, int keypress);
 
-game_error game_loop(game_t* game);
+game_error game_loop(game_t* game,int frame_counter);
 
 direction handle_input(direction prev,int ch);
 

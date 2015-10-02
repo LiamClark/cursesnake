@@ -31,10 +31,11 @@ int main(int argc, char** argv) {
   game_t game = make_game(board, snake, start);
 
   cursesSetup();
+  int frameCounter = 0;
 
   for(;;) {
     auto start = std::chrono::high_resolution_clock::now();
-    game_error error = game_loop(&game);
+    game_error error = game_loop(&game,&frameCounter);
 
     if (error != GAME_OK){
       break;
@@ -46,6 +47,7 @@ int main(int argc, char** argv) {
   	refresh();			// Print it on to the real screen
     auto frametime = std::chrono::high_resolution_clock::now() - start;
     std::this_thread::sleep_for(frameDur - frametime);
+    frameCounter++;
   }
 
   delete_board(board);
