@@ -1,6 +1,6 @@
 CC = clang
 CXX = clang++
-CFLAGS = -std=gnu11 -Wall -g -I main/include -I test/include
+CFLAGS = -std=c11-Wall -g -I main/include -I test/include
 LDFLAGS = -lncurses -lpthread
 CXXFLAGS = -std=c++14 -Wall -g -I main/include -I test/include
 

@@ -41,17 +41,19 @@ game_error game_drive_snake(game_t* game, direction dir) {
   return err;
 }
 
-game_error game_loop(game_t* game) {
+game_error game_loop(game_t* game, int* frame_counter) {
   int ch = getch();
-  direction dir;
   game_error error = GAME_OK;
   if (ch != ERR) {
     if( ch == 'q') {
-      error = GAME_OVER;
+      return GAME_OVER;
     } else {
-      direction dir = find_direction(ch);
-      error = game_drive_snake(game,dir);
+      game->dir = find_direction(ch);
     }
+  }
+  if (*frame_counter > 5) {
+    error = game_drive_snake(game,game->dir);
+    *frame_counter = 0;
   }
 
   return error;
