@@ -12,6 +12,7 @@ typedef struct game{
   board_t board;
   snake_t snake;
   direction dir;
+  snake_part apple;
 }game_t;
 
 game_t make_game(board_t board, snake_t snake, snake_part start);

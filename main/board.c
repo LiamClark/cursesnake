@@ -9,6 +9,8 @@ typedef struct board{
   int height;
 }board;
 
+static const char SPACE = ' ';
+
 char** make_contiguous_array(const int width, const int height) {
   char** matrix = malloc(height * sizeof(char*));
   char*  contigousarray = malloc(height * width * sizeof(char));
@@ -92,7 +94,7 @@ void printboard(board_t board) {
   int width = board->width;
   char** matrix = board->matrix;
 
-  for(size_t i=0; i < height; i++) {
+  for(size_t i = 0; i < height; i++) {
     for(size_t j = 0; j < width; j++) {
       addch(matrix[i][j]);
     }
@@ -100,6 +102,43 @@ void printboard(board_t board) {
     getyx(stdscr,y,x);
     move(y+1,0);
   }
+}
+
+int count_free_tiles(board_t board) {
+  size_t size = board->width * board->height;
+  char* tiles = *board->matrix;
+  int available_tiles = size;
+  for (size_t i = 0; i < size; ++i) {
+    char tile = tiles[i];
+    if (tile != SPACE) {
+      available_tiles--;
+    }
+  }
+  return available_tiles;
+}
+
+void fill_free_tiles(board_t board, char** tiles) {
+  size_t size = board->width * board->height;
+  char* btiles = *board->matrix;
+  for (size_t i = 0, index = 0; i < size; ++i) {
+    char tile = btiles[i];
+    if (tile == SPACE) {
+      tiles[index] = &btiles[i];
+      index++;
+    }
+  }
+}
+
+char** create_free_tile_array(board_t) {
+  int no_tiles =  count_free_tiles(board);
+  //one dimensional array of char pointers
+  //alocate the memory.
+  char** tiles = malloc(sizeof(char*)*no_tiles);
+  fill_free_tiles(board,tiles);
+}
+
+void add_apple(board_t board) {
+
 }
 
 void printfboard(board_t board){
