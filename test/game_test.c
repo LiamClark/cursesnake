@@ -52,6 +52,11 @@ void game_wall_collision_test(void) {
 
 void game_snake_collision_test(void) {
   redo();
+
+  //add a second part for the test.
+  snake_part start2 = {1,2};
+  add_part(get_body(snake),start2);
+
   game_error error = game_drive_snake(game,DOWN);
   CU_ASSERT_EQUAL(error, GAME_OK);
   error = game_drive_snake(game, UP);
