@@ -20,7 +20,8 @@ input_error is_valid_key(int key);
 
 snake_part snake_get_next_move(snake_t s,int c);
 
-void apply_move(snake_t s , snake_part part);
+//returns the removed part.
+snake_part apply_move(snake_t s , snake_part part);
 
 snake_part_queue * get_body(const snake_t s);
 

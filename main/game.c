@@ -10,9 +10,13 @@ game_t make_game(board_t board, snake_t snake, snake_part start) {
 game_error game_move(game_t* game, int keypress) {
   snake_part next_pos = snake_get_next_move(game->snake, keypress);
   game_error error = check_move(game, next_pos);
+
   if (error == GAME_OK) {
-      apply_move(game->snake, next_pos);
+      snake_part remove = apply_move(game->snake, next_pos);
+      set_tile(game->board,remove.y,remove.x,' ');
   }
+
+
   return error;
 }
 
