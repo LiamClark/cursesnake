@@ -10,6 +10,7 @@ typedef struct board{
 }board;
 
 static const char SPACE = ' ';
+static const char APPLE = '*';
 
 char** make_contiguous_array(const int width, const int height) {
   char** matrix = malloc(height * sizeof(char*));
@@ -108,6 +109,7 @@ int count_free_tiles(board_t board) {
   size_t size = board->width * board->height;
   char* tiles = *board->matrix;
   int available_tiles = size;
+
   for (size_t i = 0; i < size; ++i) {
     char tile = tiles[i];
     if (tile != SPACE) {
@@ -131,18 +133,29 @@ void fill_free_tiles(board_t board, char** tiles) {
 
 char** create_free_tile_array(board_t board,int* size) {
   int no_tiles =  count_free_tiles(board);
+  if (no_tiles == 0 ) {
+    return NULL;
+  }
   *size = no_tiles;
   //one dimensional array of char pointers
   //alocate the memory.
-  char** tiles = malloc(sizeof(char*)*no_tiles);
+  char** tiles = malloc(sizeof(char*) * no_tiles);
   fill_free_tiles(board,tiles);
   return tiles;
 }
 
-void add_apple(board_t board) {
-  int size;
+board_status add_apple(board_t board) {
+  int size = 0;
   char** tiles = create_free_tile_array(board,&size);
 
+  if (tiles == NULL) {
+    return BWON;
+  }
+  int index = rand() % size;
+  *tiles[index] = APPLE;
+  
+  free(tiles);
+  return BOK;
 }
 
 void printfboard(board_t board){

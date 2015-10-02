@@ -15,6 +15,8 @@ static const int height = 2;
 
 const char expected[] = "123456";
 
+static const char APPLE = '*';
+
 board_t board;
 
 int setup(void) {
@@ -83,6 +85,15 @@ void create_free_tile_array_test(void) {
   delete_board(fboard);
 }
 
+void add_apple_test(void) {
+ board_t fboard = read_board("test/res/board.txt");
+ add_apple(fboard);
+
+ bool succes = get_tile(fboard, 1,1) == APPLE || get_tile(fboard,1,2) == APPLE;
+
+ CU_ASSERT_TRUE(succes);
+}
+
 CU_pSuite get_board_suite(void){
   CU_pSuite suite = CU_add_suite("board-suite",setup,after);
 
@@ -92,5 +103,6 @@ CU_pSuite get_board_suite(void){
   CU_add_test(suite,"is_in_range_test",is_in_range_test);
   CU_add_test(suite,"count_tiles_test",count_free_tiles_test);
   CU_add_test(suite,"create_free_tile_array_test",create_free_tile_array_test);
+  CU_add_test(suite,"add_apple_test",add_apple_test);
   return suite;
 }

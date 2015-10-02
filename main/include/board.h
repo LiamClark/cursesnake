@@ -6,6 +6,7 @@
 
 typedef struct board* board_t;
 
+typedef enum{BOK,BWON} board_status;
 
 board_t read_board(const char* filename);
 board_t make_board(char* const* board, const int width, const int height);
@@ -15,6 +16,7 @@ void delete_board(board_t board);
 void set_tile(board_t b, const int y, const int x, char c);
 char get_tile(board_t b, const int y, const int x);
 
+board_status add_apple(board_t board);
 int count_free_tiles(board_t board);
 char** create_free_tile_array(board_t,int*);
 
