@@ -16,7 +16,7 @@ void set_tile(board_t b, const int y, const int x, char c);
 char get_tile(board_t b, const int y, const int x);
 
 int count_free_tiles(board_t board);
-char** create_free_tile_array(board_t;
+char** create_free_tile_array(board_t,int*);
 
 bool is_in_range(board_t board, snake_part part);
 

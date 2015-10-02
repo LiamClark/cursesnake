@@ -129,15 +129,19 @@ void fill_free_tiles(board_t board, char** tiles) {
   }
 }
 
-char** create_free_tile_array(board_t) {
+char** create_free_tile_array(board_t board,int* size) {
   int no_tiles =  count_free_tiles(board);
+  *size = no_tiles;
   //one dimensional array of char pointers
   //alocate the memory.
   char** tiles = malloc(sizeof(char*)*no_tiles);
   fill_free_tiles(board,tiles);
+  return tiles;
 }
 
 void add_apple(board_t board) {
+  int size;
+  char** tiles = create_free_tile_array(board,&size);
 
 }
 

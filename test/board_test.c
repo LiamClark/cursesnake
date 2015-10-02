@@ -1,4 +1,5 @@
 #include <CUnit/CUnit.h>
+#include <stdlib.h>
 #include "tests.h"
 #include "board.h"
 
@@ -38,7 +39,7 @@ void make_board_test(void) {
 
 void read_board_test(void) {
   int res = 0;
-  const char expected[] = "#X## #";
+  const char expected[] = "#X##  ";
   board_t fboard = read_board("test/res/board.txt");
 
   for(int y = 0; y < height; y++) {
@@ -52,7 +53,7 @@ void read_board_test(void) {
 
 void count_free_tiles_test(void) {
   board_t fboard = read_board("test/res/board.txt");
-  CU_ASSERT_EQUAL(1, count_free_tiles(fboard));
+  CU_ASSERT_EQUAL(2, count_free_tiles(fboard));
   delete_board(fboard);
 }
 
@@ -73,8 +74,11 @@ void is_in_range_test(void) {
 
 void create_free_tile_array_test(void) {
   board_t fboard = read_board("test/res/board.txt");
-  char** tiles =  create_free_tile_array(fboard);
-  
+  int size = 0;
+  char** tiles =  create_free_tile_array(fboard,&size);
+  CU_ASSERT_EQUAL(*tiles[0], ' ');
+  CU_ASSERT_EQUAL(*tiles[1], ' ');
+  CU_ASSERT_EQUAL(size, 2);
   free(tiles);
   delete_board(fboard);
 }
@@ -87,6 +91,6 @@ CU_pSuite get_board_suite(void){
   CU_add_test(suite,"read_board_test",read_board_test);
   CU_add_test(suite,"is_in_range_test",is_in_range_test);
   CU_add_test(suite,"count_tiles_test",count_free_tiles_test);
-
+  CU_add_test(suite,"create_free_tile_array_test",create_free_tile_array_test);
   return suite;
 }
