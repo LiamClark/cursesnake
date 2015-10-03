@@ -56,9 +56,13 @@ snake_part  snake_get_next_move(snake_t s, int c) {
   return head;
 }
 
-snake_part apply_move(snake_t s, snake_part part) {
+snake_part apply_move(snake_t s, snake_part part, bool take) {
+  snake_part ret = {-1,-1};
   add_part(&s->body,part);
-  return take_part(&s->body);
+  if(take){
+   ret = take_part(&s->body);
+  }
+  return ret;
 }
 
 snake_part_queue* get_body(const snake_t s) {
