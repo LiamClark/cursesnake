@@ -63,6 +63,13 @@ void game_snake_collision_test(void) {
   CU_ASSERT_EQUAL(error, GAME_COLLISION);
 }
 
+void end_to_end_test(void) {
+  redo();
+
+  add_apple(game->board);
+
+}
+
 CU_pSuite get_game_suite(void) {
   CU_pSuite suite = CU_add_suite("game-suite",setup_game, teardown_game);
 

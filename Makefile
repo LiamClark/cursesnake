@@ -29,6 +29,7 @@ $(ODIR)/%.o: $(SDIR)/%.c
 
 tests: $(MAINOBJS) $(TESTOBJS)
 	$(CC) $(TESTOBJS) $(MAINOBJS) $(LDFLAGS) -lcunit -o $(TOUT)
+	./tsnake
 
 all: $(MAINOBJS) $(EXEC)
 	$(CXX)  $(MAINOBJS) $(EXEC) -o $(OUT) $(LDFLAGS)
