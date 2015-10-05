@@ -144,16 +144,17 @@ char** create_free_tile_array(board_t board,int* size) {
   return tiles;
 }
 
-board_status add_apple(board_t board) {
+board_status add_apple(board_t board, int index) {
   int size = 0;
   char** tiles = create_free_tile_array(board,&size);
 
   if (tiles == NULL) {
     return BWON;
   }
-  int index = rand() % size;
-  *tiles[index] = APPLE;
   
+  int index_actual = index % size;
+  *tiles[index] = APPLE;
+
   free(tiles);
   return BOK;
 }

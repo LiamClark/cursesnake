@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <chrono>
 #include <thread>
+#include <random>
 
 //include C code
 extern "C" {
@@ -27,13 +28,15 @@ void cursesSetup(void) {
 int main(int argc, char** argv) {
   cursesSetup();
   board_t board = read_board("main/res/board.txt");
+  std::random_device seeder;
+  std::mt19937 generator(seeder());
   snake_t snake = make_snake(rows * collums);
   snake_part start = {3,4};
   game_t game = make_game(board, snake, start);
 
   draw_snake(snake,board);
-  add_apple(board);
-  
+  add_apple(board,generator());
+
   int frameCounter = 0;
 
   for(;;) {

@@ -16,7 +16,7 @@ void delete_board(board_t board);
 void set_tile(board_t b, const int y, const int x, char c);
 char get_tile(board_t b, const int y, const int x);
 
-board_status add_apple(board_t board);
+board_status add_apple(board_t board, int index);
 int count_free_tiles(board_t board);
 char** create_free_tile_array(board_t,int*);
 
