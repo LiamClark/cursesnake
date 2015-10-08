@@ -4,9 +4,15 @@
 static const char SPACE = ' ';
 
 game_t make_game(board_t board, snake_t snake, snake_part start) {
-  game_t ga = {board,snake,RIGHT};
+  game_t ga = {board,snake,RIGHT,{0}};
   add_part(get_body(snake),start);
   return ga;
+}
+
+void add_start_parts(game_t game, snake_part* parts, int n) {
+  for(int i = 0; i < n; i++) {
+    add_part( get_body( game.snake ), parts[i] );
+  }
 }
 
 game_error game_move(game_t* game, int keypress,bool* ate) {
@@ -15,9 +21,10 @@ game_error game_move(game_t* game, int keypress,bool* ate) {
 
   if (error == GAME_EATEN) {
     *ate = true;
+    error = GAME_OK;
   }
 
-  if (error == GAME_OK ||  error == GAME_EATEN) {
+  if (error == GAME_OK ) {
       bool take = !(*ate);
       snake_part remove = apply_move(game->snake, next_pos, take);
       if(remove.x > 0) {
@@ -55,7 +62,7 @@ game_error game_drive_snake(game_t* game, direction dir) {
     draw_snake(game->snake, game->board);
   }
   if (ate) {
-    board_status status = add_apple(game->board);
+    board_status status = add_apple(game->board,game->random);
   }
 
   return err;

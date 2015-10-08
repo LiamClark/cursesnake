@@ -80,6 +80,10 @@ char get_tile(board_t b,int y, int x) {
   return b->matrix[y][x];
 }
 
+int get_size(board_t b) {
+  return b->width * b->height;
+}
+
 
 bool int_in_range(int point, int max) {
   return 0 <= point && point < max;
@@ -151,9 +155,9 @@ board_status add_apple(board_t board, int index) {
   if (tiles == NULL) {
     return BWON;
   }
-  
+
   int index_actual = index % size;
-  *tiles[index] = APPLE;
+  *tiles[index_actual] = APPLE;
 
   free(tiles);
   return BOK;

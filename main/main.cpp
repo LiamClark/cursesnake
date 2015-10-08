@@ -28,14 +28,17 @@ void cursesSetup(void) {
 int main(int argc, char** argv) {
   cursesSetup();
   board_t board = read_board("main/res/board.txt");
+
   std::random_device seeder;
   std::mt19937 generator(seeder());
+  std::uniform_int_distribution<int> distrubtion(0, get_size(board));
+
   snake_t snake = make_snake(rows * collums);
   snake_part start = {3,4};
   game_t game = make_game(board, snake, start);
 
   draw_snake(snake,board);
-  add_apple(board,generator());
+  add_apple(board, distrubtion(generator));
 
   int frameCounter = 0;
 

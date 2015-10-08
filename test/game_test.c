@@ -1,5 +1,6 @@
 #include "tests.h"
 #include "game.h"
+#include <stdbool.h>
 #include <ncurses.h>
 
 static char* const test_board[] =
@@ -13,6 +14,8 @@ static char* const test_board[] =
 
 static const int width = 5;
 static const int height = 5;
+
+static const char APPLE = '*';
 
 board_t board;
 snake_t snake;
@@ -66,8 +69,14 @@ void game_snake_collision_test(void) {
 void end_to_end_test(void) {
   redo();
 
-  add_apple(game->board);
+  add_apple(game->board,3);
+  game_error err = game_drive_snake(game,DOWN);
 
+  CU_ASSERT_TRUE(err == GAME_OK);
+
+  bool succes = get_tile(board,2,1) != APPLE;
+
+  CU_ASSERT_TRUE(succes);
 }
 
 CU_pSuite get_game_suite(void) {
@@ -76,6 +85,6 @@ CU_pSuite get_game_suite(void) {
   CU_add_test(suite,"game_loop_test",game_loop_test);
   CU_add_test(suite,"game_wall_test",game_wall_collision_test);
   CU_add_test(suite,"game_snake_test",game_snake_collision_test);
-
+  CU_add_test(suite,"end_to_end_test",end_to_end_test);
   return suite;
 }
