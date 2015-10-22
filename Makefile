@@ -1,6 +1,6 @@
 CC = clang
 CXX = clang++
-CFLAGS = -std=c11 -Wall -g -I main/include -I test/include
+CFLAGS = -std=c11 -Wall -g -I main/include -I test/include -I /usr/local/include
 LDFLAGS = -lncurses -lpthread
 CXXFLAGS = -std=c++14 -Wall -g -I main/include -I test/include
 
@@ -28,7 +28,7 @@ $(ODIR)/%.o: $(SDIR)/%.c
 	$(CC) $(CFLAGS) -c $(INC) $< -o $@
 
 tests: $(MAINOBJS) $(TESTOBJS)
-	$(CC) $(TESTOBJS) $(MAINOBJS) $(LDFLAGS) -lcunit -o $(TOUT)
+	$(CC) $(TESTOBJS) $(MAINOBJS) $(LDFLAGS) -L /usr/local/lib  -lcunit -o $(TOUT)
 	./tsnake
 
 all: $(MAINOBJS) $(EXEC)
