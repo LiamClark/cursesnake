@@ -1,0 +1,42 @@
+apply plugin: 'c'
+apply plugin: 'cunit'
+
+
+model {
+
+  flavors{
+    passing
+    failing
+  }
+
+  repositories{
+    //specify the libraryLocation
+    def libraryLocation = "/usr/local/Cellar/"
+
+    libs(PrebuiltLibraries) {
+      cunit {
+          def libPath = "cunit/2.1-3/lib/libcunit.a"
+          headers.srcDir libraryLocation + "cunit/2.1-3/include"
+          binaries.withType(StaticLibraryBinary) {
+          staticLibraryFile = file(libraryLocation + libPath)
+        }
+      }
+    }
+  }
+
+  components {
+    snake(NativeLibrarySpec) {
+
+    }
+  }
+
+  binaries {
+    withType(CUnitTestSuiteBinarySpec) {
+          lib library: "cunit", linkage: "static"
+
+          if (flavor == flavors.failing) {
+            cCompiler.define "PLUS_broken"
+          }
+      }
+    }
+}

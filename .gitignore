@@ -3,3 +3,4 @@ tsnake
 snake
 .dSYM
 obj
+.gradle
