@@ -18,15 +18,15 @@ model {
           def libPath = "cunit/2.1-3/lib/libcunit.a"
           headers.srcDir libraryLocation + "cunit/2.1-3/include"
           binaries.withType(StaticLibraryBinary) {
-          staticLibraryFile = file(libraryLocation + libPath)
-        }
+            staticLibraryFile = file(libraryLocation + libPath)
+          }
       }
     }
   }
 
   components {
-    snake(NativeLibrarySpec) {
-
+    snake(NativeExecutableSpec) {
+        
     }
   }
 
