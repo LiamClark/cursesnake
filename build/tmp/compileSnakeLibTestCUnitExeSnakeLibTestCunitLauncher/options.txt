@@ -1,0 +1,10 @@
+-x
+c
+-c
+-I
+/Users/LC/git/C/cursesnake/build/src/snakeLibTest/cunitLauncher/headers
+-I
+/usr/local/Cellar/cunit/2.1-3/include
+-I
+/Users/LC/git/C/cursesnake/src/snakeLib/headers
+-m64

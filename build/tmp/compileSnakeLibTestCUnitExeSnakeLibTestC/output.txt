@@ -1,0 +1,10 @@
+See file:///Users/LC/git/C/cursesnake/build/tmp/compileSnakeLibTestCUnitExeSnakeLibTestC/output.txt for all output for compileSnakeLibTestCUnitExeSnakeLibTestC.
+compiling board_test.c successful.
+
+compiling snake_test.c successful.
+
+compiling game_test.c successful.
+
+compiling array_deque_test.c successful.
+
+Finished compileSnakeLibTestCUnitExeSnakeLibTestC, see full log file:///Users/LC/git/C/cursesnake/build/tmp/compileSnakeLibTestCUnitExeSnakeLibTestC/output.txt.

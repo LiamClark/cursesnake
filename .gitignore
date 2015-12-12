@@ -1,6 +1,6 @@
 #executables
 tsnake
-snake
+#snake
 .dSYM
 obj
 .gradle

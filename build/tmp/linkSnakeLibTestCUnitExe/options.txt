@@ -1,0 +1,14 @@
+-o
+/Users/LC/git/C/cursesnake/build/binaries/snakeLibTestCUnitExe/snakeLibTest
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibTestC/2rxmyonkjr89jk29vp9aiw4ek/board_test.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibTestC/bepulvvasq3kjqac7a4n5ielj/snake_test.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibTestC/bz07apg7hpxnf5kc3e1ohajeq/array_deque_test.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibTestC/e5loxq3gsdd7hrf9zlxx94pml/game_test.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibTestCunitLauncher/3d2tl30qdvruxgm396t8xtewg/gradle_cunit_main.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibC/9a76wuop8ve2tz05re5ooqsuj/game.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibC/abqqoihz62ts5codh6zvn8rzg/arraydeque.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibC/b4in45kvu1wtecjma79nz8f9z/snake.o
+/Users/LC/git/C/cursesnake/build/objs/snakeLibTestCUnitExe/snakeLibC/c74y2c9tlfvbrbginf3rdkj3s/board.o
+/usr/lib/libncurses.dylib
+/usr/local/Cellar/cunit/2.1-3/lib/libcunit.a
+-m64

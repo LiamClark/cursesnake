@@ -1,14 +1,9 @@
 apply plugin: 'c'
+apply plugin: 'cpp'
 apply plugin: 'cunit'
 
 
 model {
-
-  flavors{
-    passing
-    failing
-  }
-
   repositories{
     //specify the libraryLocation
     def libraryLocation = "/usr/local/Cellar/"
@@ -21,22 +16,41 @@ model {
             staticLibraryFile = file(libraryLocation + libPath)
           }
       }
+
+      ncurses {
+        binaries.withType(SharedLibraryBinary) {
+          sharedLibraryFile = file("/usr/lib/libncurses.dylib")
+        }
+      }
     }
   }
 
   components {
+    snakeLib(NativeLibrarySpec)
     snake(NativeExecutableSpec) {
-        
+      binaries.all {
+        lib library: "snakeLib", linkage: "static"
+      }
     }
   }
 
   binaries {
+    all {
+      lib library: "ncurses", linkage: "shared"
+
+      if (toolChain in Clang) {
+        cppCompiler.args "-std=c++14"
+        cppCompiler.args "-g"
+      }
+
+      if (buildType == buildTypes.debug) {
+        cppCompiler.args "-g"
+      }
+    }
+
     withType(CUnitTestSuiteBinarySpec) {
           lib library: "cunit", linkage: "static"
 
-          if (flavor == flavors.failing) {
-            cCompiler.define "PLUS_broken"
-          }
       }
     }
 }
