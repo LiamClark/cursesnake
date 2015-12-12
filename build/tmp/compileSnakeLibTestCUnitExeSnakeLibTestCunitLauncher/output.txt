@@ -1,4 +1,0 @@
-See file:///Users/LC/git/C/cursesnake/build/tmp/compileSnakeLibTestCUnitExeSnakeLibTestCunitLauncher/output.txt for all output for compileSnakeLibTestCUnitExeSnakeLibTestCunitLauncher.
-compiling gradle_cunit_main.c successful.
-
-Finished compileSnakeLibTestCUnitExeSnakeLibTestCunitLauncher, see full log file:///Users/LC/git/C/cursesnake/build/tmp/compileSnakeLibTestCUnitExeSnakeLibTestCunitLauncher/output.txt.

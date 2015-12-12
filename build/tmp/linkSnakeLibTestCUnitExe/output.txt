@@ -1,4 +1,0 @@
-See file:///Users/LC/git/C/cursesnake/build/tmp/linkSnakeLibTestCUnitExe/output.txt for all output for linkSnakeLibTestCUnitExe.
-linking snakeLibTest successful.
-
-Finished linkSnakeLibTestCUnitExe, see full log file:///Users/LC/git/C/cursesnake/build/tmp/linkSnakeLibTestCUnitExe/output.txt.
