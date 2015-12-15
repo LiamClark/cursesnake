@@ -4,22 +4,24 @@ apply plugin: 'cunit'
 
 
 model {
-  repositories{
-    //specify the libraryLocation
-    def libraryLocation = "/usr/local/Cellar/"
+  repositories {
+    def libraryLocation = System.getProperty("user.home") + "/.gradle-libs/"
 
     libs(PrebuiltLibraries) {
       cunit {
-          def libPath = "cunit/2.1-3/lib/libcunit.a"
-          headers.srcDir libraryLocation + "cunit/2.1-3/include"
+          def libPath = libraryLocation + "CUnit/2.1-3/lib/"
+	        println libPath
+          headers.srcDir libPath + "/include"
           binaries.withType(StaticLibraryBinary) {
-            staticLibraryFile = file(libraryLocation + libPath)
+            staticLibraryFile = file(libPath+"libcunit.a")
           }
       }
 
       ncurses {
+        def libPath = libraryLocation + "ncurses/5.4/"
         binaries.withType(SharedLibraryBinary) {
-          sharedLibraryFile = file("/usr/lib/libncurses.dylib")
+          sharedLibraryFile = file(libPath +
+            findDynamicLibraryForPlatform(targetPlatform, "libncurses"))
         }
       }
     }
@@ -53,4 +55,12 @@ model {
 
       }
     }
+}
+
+def findDynamicLibraryForPlatform(Platform platform, String lib) {
+  if (platform.operatingSystem.macOsX) {
+    return lib + ".dylib"
+  } else {
+    return lib + ".so"
+  }
 }
